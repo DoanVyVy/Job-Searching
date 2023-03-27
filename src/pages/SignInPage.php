@@ -14,17 +14,49 @@
 </head>
 
 <body>
+
+  <?php
+  $serverName = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "jobsearching";
+  $errormsg = null;
+  $conn = mysqli_connect($serverName, $username, $password, $dbname) or
+    die("Connection failed: " . mysqli_connect_error());
+
+  if (isset($_POST["login"])) {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    $sql = "SELECT * from user where email = '$email' and password = '$password'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) == 0) {
+      $errormsg = "Email or password was wrong!";
+    } else {
+      header("Location: /JobSearching/src/pages/HomePage.php");
+    }
+  }
+  mysqli_close($conn);
+  ?>
+
   <div class="main">
-    <form action="" method="POST" class="form" id="form-1">
+    <form action="" method="POST" class="form" id="form-2">
       <a href="HomePage.php">
         <img src="../../public/images/logo.png" alt="logo" class="logo">
       </a>
       <div class="spacer"></div>
 
-      <div class="form-group">
+      <div class="form-group <?php if ($errormsg) echo 'invalid'; ?>">
         <label for="email" class="form-label">Email</label>
-        <input id="email" name="email" type="text" placeholder="Enter your email" class="form-control" />
-        <span class="form-message"></span>
+        <input id="email" name="email" type="text" placeholder="Enter your email" class="form-control" value="<?php if (isset($_POST["login"])) if ($email) echo $email; ?>" />
+        <span class="form-message">
+          <?php
+          if ($errormsg) {
+            echo $errormsg;
+          }
+          ?>
+        </span>
       </div>
 
       <div class="form-group">
@@ -33,9 +65,7 @@
         <span class="form-message"></span>
       </div>
 
-
-
-      <button class="form-submit">Sign Up</button>
+      <button class="form-submit" name="login">Login</button>
 
       <div class="having-account">
         You have not had an account?
@@ -43,6 +73,17 @@
       </div>
     </form>
   </div>
+  <script src="../js/validation.js"></script>
+  <script>
+    validator({
+      form: "#form-2",
+      errorSelector: ".form-message",
+      rules: [
+        validator.isRequire("#email"),
+        validator.isRequire("#password"),
+      ]
+    });
+  </script>;
 </body>
 
 </html>

@@ -1,0 +1,107 @@
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  position: relative;
+}
+
+.navigation {
+  margin: 50px 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login {
+  color: black;
+}
+
+.create-account {
+  padding: 19px 27px 19px 28px;
+  color: white;
+  background-color: #864bd8;
+  border-radius: 34px;
+}
+
+.title {
+  width: 714px;
+  height: 160px;
+  margin-left: 363px;
+  margin-right: 363px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 70px;
+  text-align: center;
+}
+
+.message {
+  position: relative;
+  width: 469px;
+  height: 56px;
+  margin-left: 486px;
+  margin-top: 26px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: #5b5a62;
+  mix-blend-mode: normal;
+}
+
+.rainbow {
+  position: absolute;
+  left: 1024px;
+  top: 350px;
+}
+
+.a {
+  width: 248px;
+  height: 248px;
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  transform: rotate(-11.81deg);
+}
+
+.b {
+  width: 241px;
+  height: 241px;
+  position: absolute;
+  top: 100px;
+  right: 150px;
+}
+
+svg {
+  width: 17px;
+  height: 17px;
+}
+
+.content {
+  width: 612px;
+  height: 78px;
+  border-radius: 18px;
+  background-color: black;
+}
+
+.search {
+  background-color: #f57343;
+  border: none;
+  border-radius: 18px;
+  text-align: center;
+  padding: 27px 37px;
+}
